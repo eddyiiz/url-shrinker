@@ -1,10 +1,11 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const ShortUrl = require("./models/shortUrl");
 const app = express();
 
 //connecting to mongodb
-mongoose.connect("mongodb://localhost/shrinker");
+mongoose.connect(process.env.DATABASE);
 const db = mongoose.connection;
 db.on("error", (err) => console.error(err));
 db.on("open", () => console.log("database connected"));
