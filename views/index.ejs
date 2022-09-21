@@ -10,12 +10,18 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
     <title>Shrink-up!</title>
   </head>
   <body>
     <div class="container">
       <h1>URL Shrinker</h1>
-      <form action="" method="POST" class="my-4 form-inline">
+      <form action="/shortUrls" method="POST" class="my-4 form-inline">
         <label for="fullUrl" class="sr-only">URL</label>
         <input
           required
@@ -23,7 +29,7 @@
           type="url"
           name="fullUrl"
           id="fullUrl"
-          class="form-control mr-2 col"
+          class="form-control mr-2"
         />
         <button type="submit" class="btn btn-success">Shrink</button>
       </form>
@@ -37,15 +43,15 @@
           </tr>
         </thead>
         <tbody>
+          <% shortUrls.forEach(shortUrl => { %>
           <tr>
             <td>
-              <a href="https://breeza.netlify.app"
-                >https://breeza.netlify.app</a
-              >
+              <a href="<%= shortUrl.full %>"><%= shortUrl.full %></a>
             </td>
-            <td><a href="/3624ubjbj3">3624ubjbj3</a></td>
-            <td>32</td>
+            <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+            <td><%= shortUrl.clicks %></td>
           </tr>
+          <% }) %>
         </tbody>
       </table>
     </div>
